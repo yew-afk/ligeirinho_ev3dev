@@ -7,7 +7,7 @@ from pybricks.tools import wait
 
 ev3 = EV3Brick()
 ultrassonico1 = UltrasonicSensor(Port.S1)
-ultrassonico2 = UltrasonicSensor(Port.S4)
+# ultrassonico2 = UltrasonicSensor(Port.S4)
 
 while True:
     distancia1 = ultrassonico1.distance()
