@@ -3,6 +3,7 @@
 from pybricks.hubs import EV3Brick
 from pybricks.ev3devices import Motor, ColorSensor
 from pybricks.parameters import Port
+from pybricks.tools import wait
 
 
 ev3 = EV3Brick()
@@ -15,8 +16,8 @@ cor_dir = ColorSensor(Port.S2)
 
 while True:
 
-    valor_esq = int(cor_esq(reflection()))
-    valor_dir = int(cor_dir(reflectiob()))
+    valor_esq = int(cor_esq.reflection())
+    valor_dir = int(cor_dir.reflection())
 
     if valor_esq >= 50 and valor_dir >= 50:
         motor_esq.run(2.5*valor_esq)
