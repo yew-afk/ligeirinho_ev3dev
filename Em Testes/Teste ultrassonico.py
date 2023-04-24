@@ -18,7 +18,7 @@ distanciaDireito = UltrasonicSensor(Port.S4)
 
 velocidadeEsquerdo = 200
 velocidadeDireito = 200
-
+ 
 while True:
 
     distancia1 = int(ultrassonico1.distance())
@@ -46,3 +46,4 @@ while True:
     wait(1000)
     print(distancia1)
 
+#testetejdii4fjiefjiej
