@@ -8,7 +8,7 @@ from pybricks.tools import wait
 erro = 0
 Vb = 150
 Kp = 3
-comp = 60
+comp = 40
 
 ev3 = EV3Brick()
 
@@ -26,12 +26,12 @@ while True:
     mE = Vb + Kp*erro
     mD = Vb - Kp*erro
 
-    #print(valor_esq, valor_dir)
+    # print(valor_esq, valor_dir)
     #print(erro)
     #print(mE)
     #print(mD)
     #print()
     #wait(5000)
 
-    motorD.run(mD)
+    motorD.run(mD+comp)
     motorE.run(mE)

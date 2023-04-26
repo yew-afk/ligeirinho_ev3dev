@@ -12,5 +12,5 @@ right_motor = Motor(Port.C)
 
 while True:
 
-    left_motor.run(500)
-    right_motor.run(500)
+    left_motor.run(1000)
+    right_motor.run(1000)
