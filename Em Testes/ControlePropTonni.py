@@ -5,8 +5,8 @@ from pybricks.ev3devices import Motor, ColorSensor
 from pybricks.parameters import Port
 from pybricks.tools import wait
 
-valor1 = 200
-valor2 = -200
+valor1 = 250
+valor2 = -50
 
 a = (valor1 - valor2)/73
 b = valor1 - (76 * a)
@@ -24,8 +24,8 @@ while True:
     valorEsquerdo = (cor_esq.reflection())
     valorDireito = (cor_dir.reflection())
 
-    vel_direito = a*valorDireito - b
-    vel_esquerdo = a*valorEsquerdo - b
+    vel_direito = a*valorDireito + b
+    vel_esquerdo = a*valorEsquerdo + b
 
     right_motor.run(vel_direito)
     left_motor.run(vel_esquerdo)

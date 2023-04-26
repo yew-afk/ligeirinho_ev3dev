@@ -10,23 +10,22 @@ ev3 = EV3Brick()
 left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
 
-b = 150
-kp = 2
+b = 170
+kp = 5
 
-cor_dir = ColorSensor(Port.S2)
-cor_esq = ColorSensor(Port.S3)
+cor_dir = ColorSensor(Port.S3)
+cor_esq = ColorSensor(Port.S2)
 
 while True:
 
-    valor_esq = cor_esq.reflection()
-    valor_dir = cor_dir.reflection()
+    valor_esq = int(cor_esq.reflection())
+    valor_dir = int(cor_dir.reflection())
     dif = valor_esq - valor_dir
 
     vD = b + kp*dif
     vE = b - kp*dif
     left_motor.run(vE)
-    right_motor.run(vD)
+    right_motor.run(vD+100)
 
-    wait(10)
     
 
