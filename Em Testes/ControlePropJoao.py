@@ -6,8 +6,8 @@ from pybricks.parameters import Port
 from pybricks.tools import wait
 
 erro = 0
-Vb = 150
-Kp = 3
+Vb = 175
+Kp = 5
 comp = 40
 
 ev3 = EV3Brick()
@@ -23,8 +23,12 @@ while True:
     valor_dir = int(corD.reflection())
 
     erro =  (valor_esq - valor_dir) + 10
+
     mE = Vb + Kp*erro
     mD = Vb - Kp*erro
+
+    motorD.run(mD+comp)
+    motorE.run(mE)
 
     # print(valor_esq, valor_dir)
     #print(erro)
@@ -33,5 +37,5 @@ while True:
     #print()
     #wait(5000)
 
-    motorD.run(mD+comp)
-    motorE.run(mE)
+    
+    
