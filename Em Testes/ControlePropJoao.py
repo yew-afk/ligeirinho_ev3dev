@@ -6,7 +6,7 @@ from pybricks.parameters import Port
 from pybricks.tools import wait
 
 erro = 0
-Vb = 100
+Vb = 150
 Kp = 2
 comp = 50
 
