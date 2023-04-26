@@ -30,7 +30,7 @@ while True:
 
     distancia1 = int(ultraFrente.distance())
     #distancia2 = int(ultraLado.distance())
-
+   
     while distancia1 > 50:
         reflexao()
         distancia1 = int(ultraFrente.distance())

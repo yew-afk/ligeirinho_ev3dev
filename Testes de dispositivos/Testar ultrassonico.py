@@ -10,6 +10,6 @@ ultrassom = UltrasonicSensor(Port.S1)
 
 while True:
     valor = int(ultrassom.distance())
-    print(f'{valor} mm')
-    wait(10)
+    print(valor)
+    wait(1000)
 
