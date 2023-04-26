@@ -6,7 +6,9 @@ from pybricks.parameters import Port
 from pybricks.tools import wait
 
 erro = 0
-Vb = 200
+Vb = 100
+Kp = 2
+comp = 50
 
 ev3 = EV3Brick()
 
@@ -17,4 +19,12 @@ corE = ColorSensor(Port.S3)
 corD = ColorSensor(Port.S2)
 
 while True:
-    print('Está funcionando')
+    valor_esq = int(corE.reflection())
+    valor_dir = int(corD.reflection())
+
+    erro =  valor_esq - valor_dir
+    mE = Vb + Kp*erro
+    mD = Vb - Kp*erro
+
+    motorE.run(mE+comp)
+    motorD.run(mD)
