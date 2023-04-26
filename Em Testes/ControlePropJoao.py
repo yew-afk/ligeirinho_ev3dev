@@ -6,9 +6,9 @@ from pybricks.parameters import Port
 from pybricks.tools import wait
 
 erro = 0
-Vb = 175
+Vb = 150
 Kp = 5
-comp = 40
+comp = 40       
 
 ev3 = EV3Brick()
 
