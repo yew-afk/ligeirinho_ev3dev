@@ -48,8 +48,8 @@ while True:
         left_motor.reset_angle(0)
 
         while distancia2 > 50:
-            right_motor.run(100)
-            left_motor.run(-100)
+            right_motor.run(50)
+            left_motor.run(-50)
 
             angulodireito = right_motor.angle()
             anguloesquerdo = left_motor.angle()
