@@ -15,49 +15,51 @@ corDireito = ColorSensor(Port.S2)
 
 ultraFrente = UltrasonicSensor(Port.S1)
 ultraLado = UltrasonicSensor(Port.S4)
-
-def reflexao():
-    right_motor.run(velocidadeDireito)
-    left_motor.run(velocidadeEsquerdo)
-
-    valorEsquerdo = (corEsquerdo.reflection())
-    valorDireito = (corDireito.reflection())
-
-    velocidadeEsquerdo = valorEsquerdo * 2
-    velocidadeDireito = valorDireito * 2
+ 
+podecontinuar = True
 
 while True:
 
     distancia1 = int(ultraFrente.distance())
-    #distancia2 = int(ultraLado.distance())
+    distancia2 = int(ultraLado.distance())
 
-    while distancia1 > 50:
-        reflexao()
-        distancia1 = int(ultraFrente.distance())
+    if distancia1 > 50 and podecontinuar == True:
 
-    if distancia1 <= 50:
+        right_motor.run(velocidadeDireito)
+        left_motor.run(velocidadeEsquerdo)
+
+        valorEsquerdo = (corEsquerdo.reflection())
+        valorDireito = (corDireito.reflection())
+
+        velocidadeEsquerdo = valorEsquerdo * 2
+        velocidadeDireito = valorDireito * 2
+
+    elif distancia1 <= 50 and podecontinuar == True:
+        
+        podecontinuar = False
         right_motor.stop()
         left_motor.stop()
 
-        wait(10)
-
-        distancia2 = int(ultraLado.distance())
+    elif podecontinuar == False:
         right_motor.reset_angle(0)
+        left_motor.reset_angle(0)
 
-        while distancia2 < 60:
+        while distancia2 > 50:
             right_motor.run(100)
             left_motor.run(-100)
-        
-        angulo_volta = int(right_motor.angle())
-        detectando_passagem = False
-        
-        while detectando_passagem == False:
+
+            angulodireito = right_motor.angle()
+            anguloesquerdo = left_motor.angle()
+
+        right_motor.reset_angle(0)
+        left_motor.reset_angle(0)
+
+        while distancia2 < 100:
             right_motor.run(100)
             left_motor.run(100)
-            distancia2 = int(ultraLado.distance())
-            
-            if distancia2 > 100:
-                detectando_passagem = True
+
+            percursodireito = right_motor.angle()
+            percursoesquerdo = left_motor.angle()
         
-        right_motor.run_angle(100, -(angulo_volta))
-        left_motor.run_angle(100, angulo_volta, wait=True)
+
+    wait(10)
