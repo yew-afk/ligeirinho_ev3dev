@@ -15,6 +15,9 @@ corDireito = ColorSensor(Port.S2)
 
 ultraFrente = UltrasonicSensor(Port.S1)
 ultraLado = UltrasonicSensor(Port.S4)
+
+velocidadeEsquerdo = 200
+velocidadeDireito = 200
  
 podecontinuar = True
 
