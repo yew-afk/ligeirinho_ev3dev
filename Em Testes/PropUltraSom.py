@@ -5,7 +5,7 @@ from pybricks.ev3devices import Motor, ColorSensor, UltrasonicSensor
 from pybricks.parameters import Port
 from pybricks.tools import wait
 
-valor1 = 250
+valor1 = 250 
 
 a = (valor1 - valor2)/73
 b = valor1 - (76 * a)
