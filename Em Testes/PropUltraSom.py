@@ -13,10 +13,10 @@ kp = 4
 vb = 157
 
 left_motor = Motor(Port.B)
-right_motor = Motor(Port.C)
+right_motor = Motor(Port.D)
 
 ultraF = UltrasonicSensor(Port.S1)
-ultraD = UltrasonicSensor(Port.S2)
+ultraD = UltrasonicSensor(Port.S4)
 
 cor_dir = ColorSensor(Port.S2)
 cor_esq = ColorSensor(Port.S3)
@@ -25,23 +25,28 @@ cor_esq = ColorSensor(Port.S3)
 while True:
 
     distF = ultraF.distance()
-    distD = ultraD.distance()
+    distD = ultraD.distance() 
 
     valorE = cor_esq.reflection()
     valorD = cor_dir.reflection()
 
     dif = valorE - valorD
 
-    if distF <= 150:
+    if distF <= 120 and distD >= 150:
+        while True:
+            if distD <= 150:
+                right_motor.run(100)
+                left_motor.run(100)
+                wait(200)
+            else:
+                distD = ultraD.distance()
+                right_motor.run(-200)
+                left_motor.run(200)
+            
 
-        vel_direito = kp*valorD + 500
-        vel_esquerdo = kp*valorE + 500
-
-        right_motor.run(vel_direito)
-        left_motor.run(vel_esquerdo)
     else:
-        vel_direito = kp*valorD + vb
-        vel_esquerdo = kp*valorE + vb
+        vel_direito = vb - kp*dif
+        vel_esquerdo = vb + kp*dif 
 
         right_motor.run(vel_direito)
         left_motor.run(vel_esquerdo)
