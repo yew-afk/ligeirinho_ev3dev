@@ -19,7 +19,7 @@ ultraF = UltrasonicSensor(Port.S1)
 ultraD = UltrasonicSensor(Port.S4)
 
 cor_dir = ColorSensor(Port.S2)
-cor_esq = ColorSensor(Port.S3)
+cor_esq = ColorSensor(Port.S3))
 
 
 while True:
@@ -37,11 +37,13 @@ while True:
             if distD <= 150:
                 right_motor.run(100)
                 left_motor.run(100)
-                wait(200)
+                wait(150)
+                break
             else:
                 distD = ultraD.distance()
-                right_motor.run(-200)
-                left_motor.run(200)
+                right_motor.run(-150)
+                left_motor.run(150)
+                break 
             
 
     else:
